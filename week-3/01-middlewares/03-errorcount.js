@@ -23,4 +23,9 @@ app.get('/errorCount', function(req, res) {
   res.status(200).json({ errorCount });
 });
 
+
+app.use(function(err, req, res, next){
+  res.status(500).send("Internal server error");
+  errorCount = errorCount + 1;
+})
 module.exports = app;
